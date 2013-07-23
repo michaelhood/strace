@@ -2707,6 +2707,11 @@ trace_syscall_exiting(struct tcb *tcp)
 	dumpio(tcp);
 	line_ended();
 
+#ifdef USE_LIBUNWIND
+	if (stack_trace_enabled)
+		print_stacktrace(tcp);
+#endif
+
  ret:
 	tcp->flags &= ~TCB_INSYSCALL;
 	return 0;
