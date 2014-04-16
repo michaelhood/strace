@@ -745,7 +745,6 @@ droptcb(struct tcb *tcp)
 
 #ifdef USE_LIBUNWIND
 	if (stack_trace_enabled) {
-		delete_mmap_cache(tcp);
 		free_libunwind_ui(tcp);
 	}
 #endif
