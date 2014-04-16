@@ -731,11 +731,11 @@ extern void tv_mul(struct timeval *, struct timeval *, int);
 extern void tv_div(struct timeval *, struct timeval *, int);
 
 #ifdef USE_LIBUNWIND
-extern void init_unwind_addr_space(void);
-extern void init_libunwind_ui(struct tcb *tcp);
-extern void free_libunwind_ui(struct tcb *tcp);
-extern void delete_mmap_cache(struct tcb* tcp);
-extern void print_stacktrace(struct tcb* tcp);
+extern void unwind_init(void);
+extern void unwind_tcb_init(struct tcb *tcp);
+extern void unwind_tcb_fin(struct tcb *tcp);
+extern void unwind_delete_mmap_cache(struct tcb* tcp);
+extern void unwind_print_stacktrace(struct tcb* tcp);
 #endif
 
 /* Strace log generation machinery.

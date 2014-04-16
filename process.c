@@ -998,7 +998,7 @@ sys_execve(struct tcb *tcp)
 #ifdef USE_LIBUNWIND
 	else {
 		if (stack_trace_enabled)
-			delete_mmap_cache(tcp);
+			unwind_delete_mmap_cache(tcp);
 	}
 #endif
 
