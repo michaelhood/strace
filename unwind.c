@@ -69,7 +69,7 @@ unwind_tcb_init(struct tcb *tcp)
 void
 unwind_tcb_fin(struct tcb *tcp)
 {
-	unwind_delete_mmap_cache(tcp);
+	unwind_cache_invalidate(tcp);
 	_UPT_destroy(tcp->libunwind_ui);
 	tcp->libunwind_ui = NULL;
 }
@@ -157,7 +157,7 @@ alloc_mmap_cache(struct tcb* tcp)
 
 /* deleting the cache */
 void
-unwind_delete_mmap_cache(struct tcb* tcp)
+unwind_cache_invalidate(struct tcb* tcp)
 {
 	unsigned int i;
 	for (i = 0; i < tcp->mmap_cache_size; i++) {

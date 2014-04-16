@@ -174,7 +174,7 @@ print_mmap(struct tcb *tcp, long *u_arg, unsigned long long offset)
 	if (entering(tcp)) {
 #ifdef USE_LIBUNWIND
 		if (stack_trace_enabled)
-			unwind_delete_mmap_cache(tcp);
+			unwind_cache_invalidate(tcp);
 #endif
 
 		/* addr */
@@ -309,7 +309,7 @@ sys_munmap(struct tcb *tcp)
 #ifdef USE_LIBUNWIND
 	else {
 		if (stack_trace_enabled)
-			unwind_delete_mmap_cache(tcp);
+			unwind_cache_invalidate(tcp);
 	}
 #endif
 	return 0;
@@ -326,7 +326,7 @@ sys_mprotect(struct tcb *tcp)
 #ifdef USE_LIBUNWIND
 	else {
 		if (stack_trace_enabled)
-			unwind_delete_mmap_cache(tcp);
+			unwind_cache_invalidate(tcp);
 	}
 #endif
 	return 0;

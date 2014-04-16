@@ -734,7 +734,7 @@ extern void tv_div(struct timeval *, struct timeval *, int);
 extern void unwind_init(void);
 extern void unwind_tcb_init(struct tcb *tcp);
 extern void unwind_tcb_fin(struct tcb *tcp);
-extern void unwind_delete_mmap_cache(struct tcb* tcp);
+extern void unwind_cache_invalidate(struct tcb* tcp);
 extern void unwind_print_stacktrace(struct tcb* tcp);
 #endif
 
